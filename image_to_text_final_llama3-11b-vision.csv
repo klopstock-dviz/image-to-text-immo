@@ -1,88 +1,42 @@
 idannonce,photo,url_img,content,model,process,time_photo_process
-apimo-83969433,photo_0,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_0.jpg,"This image depicts the front entrance of a Mediterranean-style home, featuring two arched windows and an open door with ornate ironwork. The white stucco exterior is adorned with decorative elements, including carved stone accents above the windows and a small tile mosaic on the left side of the wall.
+apimo-83969433,photo_0,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_0.jpg,"This image depicts the front entrance of a Mediterranean-style home, featuring two arched windows and an open door with ornate ironwork. The white stucco exterior is adorned with decorative elements, including carved stone accents above the windows and a small tile mosaic on the wall to the left.
 
-The interior of the house can be seen through the doorway, revealing a spacious room with high ceilings and elegant furnishings. A large chandelier hangs from the ceiling, adding to the sense of luxury and sophistication.
+The interior of the house can be seen through the doorway, revealing a spacious room with high ceilings and elegant furnishings. A large chandelier hangs from the ceiling, adding to the sense of grandeur. The walls are painted a warm, creamy color, complemented by dark wood paneling and richly patterned rugs.
 
-In the foreground, a potted plant sits on a ledge outside the door, surrounded by lush greenery that adds a touch of natural beauty to the scene. The overall atmosphere of the image is one of warmth and welcome, inviting potential buyers to step inside and explore this stunning property.",llama3.2-vision:11b,ok,12.18664836883545
-apimo-83969433,photo_1,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_1.jpg,"The image shows an outdoor patio area with two white couches, a wooden coffee table, and a rug on a brown tile floor.
+A potted plant sits on the ledge outside the door, adding a touch of greenery to the scene. Overall, this image presents a stunning example of Mediterranean-style architecture, showcasing its unique blend of elegance and sophistication.",llama3.2-vision:11b,ok,4.76924467086792
+apimo-83969433,photo_1,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_1.jpg,"The image depicts a rooftop patio with two white couches, a wooden coffee table, and a rug on top of brown tile flooring. The couches have white cushions and pillows, and are arranged facing each other. A small potted plant is placed between them.
 
-The patio is furnished with two identical white couches, each with six pillows. The couches are made of light-colored wood and have a minimalist design. In front of the couches is a large octagonal-shaped wooden coffee table. A colorful patterned rug lies underneath the coffee table. 
+In the background, there are trees and buildings visible, suggesting that the property is located in an urban or suburban area. The overall atmosphere of the image appears to be one of relaxation and tranquility, with the comfortable-looking furniture and peaceful surroundings creating a sense of calm.",llama3.2-vision:11b,ok,3.2014544010162354
+apimo-83969433,photo_10,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_10.jpg,"The image shows a bedroom with a large window, white walls and furniture, and a bed with pillows.
 
-In the background, there are trees and bushes surrounding the patio area. Beyond the greenery, several buildings can be seen in the distance. The sky above is blue with some white clouds.
-
-The overall atmosphere of the image suggests a relaxing and serene outdoor space perfect for lounging or entertaining guests.",llama3.2-vision:11b,ok,6.903756380081177
-apimo-83969433,photo_10,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_10.jpg,"The image shows a bedroom with a large window, white walls and furniture.
-
-The room is well-lit by natural light coming from the window on the right side of the image. The bed has a tufted headboard and is covered with a white duvet. There are two pillows on top of it, one pink and one blue. A small table or stool sits in front of the bed.
-
-The walls of the room are painted white and have decorative molding around them. The floor appears to be made of hardwood or laminate flooring. In the background, there is a view of the outside through the window, which shows trees and other buildings.",llama3.2-vision:11b,ok,6.489438533782959
-apimo-83969433,photo_11,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_11.jpg,"The image shows a bedroom with a large bed, a nightstand, and a painting on the wall. The room is well-lit, suggesting that it receives plenty of natural light.
-
+*   **Window:**
+    *   The window is large and has three panes.
+    *   It is open, allowing natural light to enter the room.
+    *   Outside the window, there are trees and buildings visible.
 *   **Bed:**
     *   The bed is positioned against one wall of the room.
-    *   It has a gray upholstered headboard and a white comforter.
-    *   There are two pillows on the bed, one pink and one white.
-    *   A small table or nightstand is placed beside the bed.
-*   **Nightstand:**
-    *   The nightstand is made of wood and has a simple design.
-    *   It appears to be empty, with no objects or decorations on its surface.
-*   **Painting:**
-    *   The painting hangs above the bed, adding a touch of color and personality to the room.
-    *   It features abstract shapes in shades of pink, blue, and yellow.
+    *   It has a white comforter and several pillows in various colors.
+    *   There is a small table or nightstand next to the bed.
+*   **Walls:**
+    *   The walls are painted white and have a smooth finish.
+    *   They appear to be made of drywall or plaster.
+    *   There are no visible decorations on the walls, such as artwork or mirrors.
+*   **Flooring:**
+    *   The flooring is not visible in this image.
+    *   It may be carpeted or have hardwood floors.
 
-Overall, the bedroom is clean and minimalist, with a focus on simplicity and functionality. The addition of the painting adds a pop of color and visual interest to the space.",llama3.2-vision:11b,ok,9.004317045211792
-apimo-83969433,photo_12,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_12.jpg,"The image depicts a bedroom with white walls and a large bed, featuring a tufted headboard and a colorful throw pillow. The room is well-lit, suggesting natural light from windows on one or more sides of the room.
+Overall, the room appears to be well-lit and has a clean, minimalist aesthetic.",llama3.2-vision:11b,ok,6.249986171722412
+apimo-83969433,photo_11,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_11.jpg,"The image depicts a bedroom with an en-suite bathroom, featuring a large bed and a doorway leading to the bathroom.
 
-In the foreground, there are several pieces of furniture, including a dresser or chest of drawers against the wall opposite the bed, and a chair in the corner near the window. A painting hangs above the dresser, adding a touch of elegance to the space.
+In the foreground, the bed is positioned against the right wall, adorned with a gray upholstered headboard and topped with white sheets and pillows. A vibrant orange blanket or throw is draped across the foot of the bed, adding a pop of color to the room. Above the bed, a painting hangs on the wall, its abstract design featuring red, black, and peach hues.
 
-The overall atmosphere of the room is one of serenity and relaxation, with soft lighting and comfortable-looking bedding creating a cozy ambiance. The presence of natural light pouring in through the windows adds to the sense of brightness and airiness in the room.",llama3.2-vision:11b,ok,6.957825660705566
-apimo-83969433,photo_13,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_13.jpg,"This image depicts a bathroom with white subway tiles on the walls and a blue, yellow, and tan patterned tile floor. The room features a large mirror above a pedestal sink with four silver faucets, accompanied by a small window to the left of the mirror.
+On the left side of the image, a doorway leads into the bathroom, which boasts white walls and a patterned tile floor. A freestanding bathtub sits in front of a window, allowing natural light to pour in. The room is well-lit, with sunlight streaming through the window and illuminating the space.
 
-In the background, there is an open doorway leading to another room, as well as a white door that appears to be closed. A towel rack on the right side of the image holds two towels: one pink and one blue. The overall atmosphere suggests a clean and modern bathroom design.",llama3.2-vision:11b,ok,5.998063087463379
-apimo-83969433,photo_14,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_14.jpg,"The image depicts a bedroom with a bed, bookshelf, and window.
+Overall, the scene presents a serene and inviting atmosphere, perfect for relaxation and rejuvenation.",llama3.2-vision:11b,ok,7.733006954193115
+apimo-83969433,photo_12,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_12.jpg,"This image depicts a serene and inviting bedroom, characterized by its neutral color palette and elegant furnishings.
 
-The bed is positioned against the back wall of the room, with its headboard facing the viewer. It has a white comforter and two pillows, one blue and one white. A purple blanket or throw is draped across the foot of the bed. The bed is situated in front of a large window that spans almost the entire width of the wall. The window has a decorative iron grate over it and is dressed with sheer curtains.
+The bed, situated against the back wall, features a tufted gray headboard and is adorned with crisp white linens, complemented by two pink pillows and one multicolored pillow at the foot. A wooden dresser stands to the right of the bed, while a chair is positioned in the corner, creating a cozy reading nook.
 
-To the left of the bed stands a wooden bookshelf, filled with books and other items. The walls are painted a light green color, and there is a patterned rug on the floor. In the background, trees can be seen through the window, suggesting that the room is located in a house or apartment with an outdoor view.
+The room's walls are painted a soothing off-white hue, providing a clean backdrop for the tasteful decor. The floor is covered with a gray and white patterned rug, adding warmth and texture to the space.
 
-Overall, the scene appears to be a cozy and inviting bedroom, perfect for relaxing and reading. The presence of books and a comfortable-looking bed suggests that this room is intended as a retreat from the stresses of daily life.",llama3.2-vision:11b,ok,8.641554117202759
-apimo-83969433,photo_15,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_15.jpg,"The image shows a bathroom with white subway tiles on the walls and floor, featuring a pedestal sink with two silver faucets, an oval mirror above it, and a glass shower door to the left.
-
-In the foreground, the glass shower door is partially visible, while the background showcases the rest of the bathroom. The sink is situated against a wall covered in white subway tiles, which also cover the floor. A colorful rug adds a pop of color beneath the pedestal sink. Above the sink, an oval mirror hangs on the wall, reflecting the room's interior.
-
-The overall atmosphere suggests that this is a real estate photo intended to showcase the bathroom's features and amenities.",llama3.2-vision:11b,ok,6.549556016921997
-apimo-83969433,photo_2,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_2.jpg,"The image depicts an interior room with white walls and a tiled floor, featuring three arched windows on one wall and a door on another. The room is furnished with a round table and four transparent chairs.
-
-In the foreground, the room's entrance is visible through an open doorway, which leads to a hallway or adjacent space. The background of the image reveals a lush garden or yard outside the windows, adding a touch of natural beauty to the interior setting. Overall, the scene presents a serene and inviting atmosphere, perfect for relaxation or socializing.",llama3.2-vision:11b,ok,5.927917957305908
-apimo-83969433,photo_3,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_3.jpg,"The image shows two different views of an open-plan living space, with a kitchenette and dining area on the left side of the top image and a living room on the right side.
-
-In the top image, there is a black leather sofa against the wall, accompanied by a colorful throw pillow. A small tree stands in front of the sofa, adding some greenery to the space. The walls are painted white, and there is a large piece of artwork hanging above the sofa. On the left side of the room, there is a kitchenette with dark wood cabinets and a sink.
-
-In the bottom image, we see the same living room from a different angle. There is a gray velvet ottoman in front of the sofa, which has been pushed against the wall to create more space. The walls are still painted white, but now we can see that there is a doorway leading out of the room on the right side.
-
-Overall, this image shows a cozy and inviting living space with plenty of natural light. The combination of modern furniture and traditional artwork creates a unique and interesting atmosphere.",llama3.2-vision:11b,ok,8.733628988265991
-apimo-83969433,photo_4,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_4.jpg,"The image shows a living room with a dining area, featuring white walls and ceilings, a large window on the right side of the room, and a doorway leading to another room.
-
-In the foreground, there is a black leather couch adorned with two throw pillows, one blue and one beige. A floor lamp stands behind the couch, while a flat-screen TV is mounted on the wall above a wooden entertainment center. The entertainment center holds a stereo system and a few decorative items.
-
-On the right side of the room, a white coffee table sits in front of a gray armchair with a matching ottoman. Behind the chair, there is a large window with a decorative ironwork design. A small side table or console table stands next to the chair, holding a lamp and some books.
-
-In the background, a dining area can be seen through an archway. The dining room features a wooden table surrounded by four chairs, with a chandelier hanging above it. On the wall behind the table, there is a large piece of artwork or a mirror.",llama3.2-vision:11b,ok,8.577552318572998
-apimo-83969433,photo_5,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_5.jpg,"This image depicts a living room with white walls and a large window on the left side, featuring an arched top and ornate ironwork. The room is furnished with two chairs positioned in front of the window, accompanied by a small table between them. A low cabinet or credenza stands against the wall to the right of the window, while a couch is situated along the back wall.
-
-The floor is covered with a white rug adorned with black lines and shapes, adding a touch of elegance to the space. The walls are painted white, providing a clean and neutral backdrop for the room's furnishings. Overall, this image showcases a stylish and inviting living room that exudes warmth and sophistication.",llama3.2-vision:11b,ok,6.661271333694458
-apimo-83969433,photo_6,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_6.jpg,"The image depicts a living room with white walls and a large window on the back wall, which is adorned with decorative ironwork. The room features a gray armchair positioned to the left of the window, accompanied by a blue wireframe chair to its right. A low table sits in front of the chairs, while a TV is mounted above it.
-
-In the center of the room, a light-colored rug covers the floor, and a coffee table made of stone or concrete is placed on top of it. To the left of the coffee table stands a wooden cabinet with two doors, which appears to be used for storing books or other items. On the right side of the room, there is another chair, although its color cannot be determined due to the angle of the photo.
-
-The overall atmosphere of the room suggests that it is well-lit and airy, thanks to the large window and the use of light-colored furniture and decor. The presence of a TV and cabinet implies that this space could be used for both relaxation and entertainment purposes.",llama3.2-vision:11b,ok,8.486795663833618
-apimo-83969433,photo_7,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_7.jpg,"The image depicts a modern kitchen with white marble countertops and brown cabinets, featuring a sink on the left side of the room and an oven to the right.
-
-In the foreground, the sink is situated under a window, accompanied by a faucet and a small shelf above it. The countertop extends from the sink area to the right, where various appliances are placed, including a coffee maker, toaster, and kettle. A gas stove is located on the far right side of the room.
-
-The cabinets are made of brown wood and have silver handles. Above the oven, there is a small cabinet with a silver handle. The walls are painted white, providing a clean and neutral backdrop for the kitchen's modern features. Overall, the image showcases a sleek and functional kitchen design.",llama3.2-vision:11b,ok,7.047587156295776
-apimo-83969433,photo_8,https://raw.githubusercontent.com/klopstock-dviz/image-to-text-immo/refs/heads/main/photos/apimo-83969433__1950000_43.6954_7.2473/photo_8.jpg,"The image shows a kitchen with white walls and cabinets, featuring a marble countertop and backsplash. The kitchen is well-lit, with natural light pouring in from the window on the right side of the room.
-
-In the foreground, there are two red cabinets mounted above the counter, while below them, a black cabinet is visible. On top of the counter, various items are arranged, including a kettle and other appliances. The floor appears to be made of white marble or tile, adding to the kitchen's sleek and modern aesthetic.
-
-The overall atmosphere of the image suggests that it is a professionally taken photograph for real estate purposes, showcasing the kitchen's features and amenities in an attractive and inviting way.",llama3.2-vision:11b,ok,6.705554962158203
+Through the windows on the back wall, lush greenery and a stone building can be seen, suggesting that this bedroom is part of a larger home or estate situated in a picturesque natural setting. Overall, this image presents a peaceful retreat that exudes comfort and sophistication.",llama3.2-vision:11b,ok,7.829470157623291

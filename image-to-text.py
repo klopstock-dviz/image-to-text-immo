@@ -14,8 +14,8 @@ def main():
     url = f'https://raw.githubusercontent.com/{username}/image-to-text-immo/main/_df_image_to_text.csv'
 
     df_image_to_text=pd.read_csv(url)
-    display(df_image_to_text.head())
-    display(df_image_to_text.shape)
+    print(df_image_to_text.head())
+    print(df_image_to_text.shape)
 
 
 

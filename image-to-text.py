@@ -9,7 +9,7 @@ import traceback
 import subprocess
 import os
 
-def main(secret):
+def main():
     username="klopstock-dviz"
     url = f'https://raw.githubusercontent.com/{username}/image-to-text-immo/main/_df_image_to_text.csv'
 

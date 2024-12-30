@@ -129,7 +129,7 @@ def main():
 
     results=[]
     step_process_ad=0
-    for idannonce in image_to_text_final_llama3["idannonce"].unique()[:6]:
+    for idannonce in image_to_text_final_llama3["idannonce"].unique():
         t=timing()
 
         print("annonce", idannonce)
@@ -178,7 +178,7 @@ def main():
         )
 
         # save each n steps
-        if (step_process_ad + 1) % 2 == 0:
+        if (step_process_ad + 1) % 5 == 0:
             csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
             git_push(OUTPUT_FILENAME)
 

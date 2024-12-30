@@ -15,6 +15,7 @@ USERNAME = "klopstock-dviz"
 REPO_URL = f'https://github.com/{USERNAME}/image-to-text-immo.git'
 df_image_to_text_URL = f'https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/_df_image_to_text.csv'
 image_to_text_final_llama3_URL=f"https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/image_to_text_final_llama3-11b-vision.csv"
+idannonces_summarized_URL=f"https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/idannonces_summarized.csv"
 MODEL = 'qwen2.5:7b'
 OUTPUT_FILENAME = "description_automatique_annonces"
 
@@ -121,11 +122,14 @@ def main():
     start_ollama_service()
     df_image_to_text = load_data(df_image_to_text_URL)
     image_to_text_final_llama3=load_data(image_to_text_final_llama3_URL)
+    idannonces_summarized=load_data(idannonces_summarized_URL)
+
     logging.info(df_image_to_text.head())
     logging.info(df_image_to_text.shape)
 
     df_image_to_text.dropna(subset=["idannonce"], axis=0, inplace=True)
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
+    image_to_text_final_llama3=image_to_text_final_llama3[~image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
 
     results=[]
     step_process_ad=0
@@ -183,6 +187,7 @@ def main():
             git_push(OUTPUT_FILENAME)
 
         step_process_ad += 1
+        logging.info(f"{idannonce}: {len(response.split(' '))} mots")
 
     csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)

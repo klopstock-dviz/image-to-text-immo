@@ -129,7 +129,7 @@ def main():
 
     df_image_to_text.dropna(subset=["idannonce"], axis=0, inplace=True)
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
-    image_to_text_final_llama3=image_to_text_final_llama3[image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
+    image_to_text_final_llama3=image_to_text_final_llama3[~image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
 
     results=[]
     step_process_ad=0
@@ -187,6 +187,7 @@ def main():
             git_push(OUTPUT_FILENAME)
 
         step_process_ad += 1
+        logging.info(f"{idannonce}: {len(response.split(' '))} mots")
 
     csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)

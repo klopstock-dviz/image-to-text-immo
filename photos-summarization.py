@@ -1,8 +1,6 @@
 import ast
 import pandas as pd
 import ollama
-import requests
-from io import BytesIO
 from time import time as timing
 import traceback
 import subprocess
@@ -130,6 +128,7 @@ def main():
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
 
     results=[]
+    step_process_ad=0
     for idannonce in image_to_text_final_llama3["idannonce"].unique()[:6]:
         t=timing()
 

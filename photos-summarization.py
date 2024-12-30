@@ -130,7 +130,7 @@ def main():
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
 
     results=[]
-    for idannonce in image_to_text_final_llama3["idannonce"].unique()[:2]:
+    for idannonce in image_to_text_final_llama3["idannonce"].unique()[:4]:
         t=timing()
 
         print("annonce", idannonce)

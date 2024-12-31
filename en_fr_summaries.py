@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Configuration
 USERNAME = "klopstock-dviz"
 REPO_URL = f'https://github.com/{USERNAME}/image-to-text-immo.git'
-description_automatique_annonces_URL = f'https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/description_automatique_annonces.csv'
+description_automatique_annonces_URL = f'https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/description_automatique_annonces_en.csv'
 MODEL = 'qwen2.5:7b'
 OUTPUT_FILENAME = "description_automatique_annonces_translated"
 

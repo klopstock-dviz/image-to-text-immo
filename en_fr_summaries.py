@@ -1,6 +1,7 @@
 import pandas as pd
 import ollama
 from time import time as timing
+import time
 import traceback
 import subprocess
 import os
@@ -90,19 +91,16 @@ def main():
     for idx in df_description_automatique_annonces.index:
         try:
             resume=df_description_automatique_annonces.loc[idx, "resume"]
-            stream = ollama.chat(
+            stream =  ollama.generate(
                 model=MODEL,
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant that translates summaries of real estate ads from english to french"},              
-                    {"role": "user", "content": f"Translate this summary to french: {resume}"}
-                ],
+                prompt=f"Translate this summary to french: {resume}",
                 stream=True,
                 options={"temperature": 0.2}
             )
 
             response = ""
             for chunk in stream:
-                content = chunk['message']['content']
+                content = chunk['content']
                 response += content
                 # print(content, end='', flush=True)
 
@@ -117,9 +115,16 @@ def main():
             logging.info(f"step {step_process_ad}----------------\n {df_description_automatique_annonces.loc[idx, 'idannonce']}: {len(response.split(' '))} mots")
             step_process_ad += 1
 
+            
+            time.sleep(2)  # 1-second delay between API calls
+
 
         except Exception as e:
+            logging.error(f"Exception occurred at index {idx}: {str(e)}", exc_info=True)
             log_exception()
+
+        finally:
+            logging.info("Streaming generator closed.")
 
     csv_path = save_data(df_description_automatique_annonces, OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)

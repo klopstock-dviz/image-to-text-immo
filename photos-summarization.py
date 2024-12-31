@@ -199,7 +199,6 @@ def main():
                 logging.info(f"step {step_process_ad}----------------\n {idannonce}: {len(response.split(' '))} mots")
                 step_process_ad += 1
 
-                a=1/0
 
             except Exception as e:
                 log_exception()

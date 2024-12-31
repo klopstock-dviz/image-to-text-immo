@@ -100,8 +100,9 @@ def main():
 
             response = ""
             for chunk in stream:
-                content = chunk['content']
-                response += content
+                if 'response' in chunk:
+                    content = chunk['response']
+                    response += content
                 # print(content, end='', flush=True)
 
             df_description_automatique_annonces.loc[idx, "resume_fr"]=response

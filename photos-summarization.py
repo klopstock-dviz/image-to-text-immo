@@ -20,6 +20,13 @@ MODEL = 'qwen2.5:7b'
 OUTPUT_FILENAME = "description_automatique_annonces"
 
 
+def log_exception():
+    # Capture the exception traceback as a string
+    tb_str = traceback.format_exc()
+    # Log the traceback string as an error
+    logging.error(tb_str)
+
+
 def load_data(url):
     """Load data from a URL into a DataFrame."""
     try:
@@ -129,65 +136,73 @@ def main():
 
     df_image_to_text.dropna(subset=["idannonce"], axis=0, inplace=True)
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
-    image_to_text_final_llama3=image_to_text_final_llama3[~image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
+    # image_to_text_final_llama3=image_to_text_final_llama3[~image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
 
     results=[]
     step_process_ad=0
-    for idannonce in image_to_text_final_llama3["idannonce"].unique():
+    annonces_ids=image_to_text_final_llama3["idannonce"].unique()
+    for idannonce in annonces_ids:
         t=timing()
 
-        print("annonce", idannonce)
+        
         df_arr_summaries=image_to_text_final_llama3[image_to_text_final_llama3["idannonce"]==idannonce]
 
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant that summaries descriptions of real estate various rooms."},
-        ]    
-        for i in df_arr_summaries.index:
-            text=df_arr_summaries.loc[i, "content"]
+        if len(df_arr_summaries) >0:
+            try:
+                messages = [
+                    {"role": "system", "content": "You are a helpful assistant that summaries descriptions of real estate various rooms."},
+                ]    
+                for i in df_arr_summaries.index:
+                    text=df_arr_summaries.loc[i, "content"]
 
-            messages.append(
-                {
-                    "role": "user", 
-                    "content": text
-                }    
-            )
+                    messages.append(
+                        {
+                            "role": "user", 
+                            "content": text
+                        }    
+                    )
 
-        structured_data=df_image_to_text[df_image_to_text["idannonce"]==idannonce]
-        messages.append({
-            "role": "user",
-            "content": generate_prompt_template(structured_data)
-        })
+                structured_data=df_image_to_text[df_image_to_text["idannonce"]==idannonce]
+                messages.append({
+                    "role": "user",
+                    "content": generate_prompt_template(structured_data)
+                })
 
-        stream = ollama.chat(
-            model=MODEL,
-            messages=messages,
-            stream=True,
-            options={"temperature": 0.2}
-        )
+                stream = ollama.chat(
+                    model=MODEL,
+                    messages=messages,
+                    stream=True,
+                    options={"temperature": 0.2}
+                )
 
-        response = ""
-        for chunk in stream:
-            content = chunk['message']['content']
-            response += content
-            
+                response = ""
+                for chunk in stream:
+                    content = chunk['message']['content']
+                    response += content
+                    
 
-        tf=timing()-t
+                tf=timing()-t
 
-        results.append(
-            {
-                "idannonce": idannonce,
-                "messages": messages, 
-                "resume": response, 
-                "time": tf}
-        )
+                results.append(
+                    {
+                        "idannonce": idannonce,
+                        "messages": messages, 
+                        "resume": response, 
+                        "time": tf}
+                )
 
-        # save each n steps
-        if (step_process_ad + 1) % 5 == 0:
-            csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
-            git_push(OUTPUT_FILENAME)
+                # save each n steps
+                if (step_process_ad + 1) % 10 == 0:
+                    csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
+                    git_push(OUTPUT_FILENAME)
+                
+                logging.info(f"step {step_process_ad}----------------\n {idannonce}: {len(response.split(' '))} mots")
+                step_process_ad += 1
 
-        step_process_ad += 1
-        logging.info(f"{idannonce}: {len(response.split(' '))} mots")
+                a=1/0
+
+            except Exception as e:
+                log_exception()
 
     csv_path = save_data(pd.DataFrame(results), OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)

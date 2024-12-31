@@ -136,11 +136,12 @@ def main():
 
     df_image_to_text.dropna(subset=["idannonce"], axis=0, inplace=True)
     image_to_text_final_llama3.dropna(subset=["idannonce"], axis=0, inplace=True)
-    # image_to_text_final_llama3=image_to_text_final_llama3[~image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
+    image_to_text_final_llama3=image_to_text_final_llama3[image_to_text_final_llama3["idannonce"].isin(idannonces_summarized["idannonce"])]
 
     results=[]
     step_process_ad=0
     annonces_ids=image_to_text_final_llama3["idannonce"].unique()
+    logging.info(f"nb annonces à traiter: {len(annonces_ids)}")
     for idannonce in annonces_ids:
         t=timing()
 

@@ -125,8 +125,8 @@ def main():
 
             # save each n steps
             if (step_process_ad + 1) % 5 == 0:
-                _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]["idannonce", "resume_fr"]
-                csv_path = save_data(_df_description_automatique_annonces, OUTPUT_FILENAME)
+                _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]
+                csv_path = save_data(_df_description_automatique_annonces["idannonce", "resume_fr"], OUTPUT_FILENAME)
                 git_push(OUTPUT_FILENAME)
             
             logging.info(f"step {step_process_ad}----------------\n {idannonce}: {len(response.split(' '))} mots")
@@ -143,7 +143,7 @@ def main():
         finally:
             logging.info("Streaming generator closed.")
     _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]["idannonce", "resume_fr"]
-    csv_path = save_data(_df_description_automatique_annonces, OUTPUT_FILENAME)
+    csv_path = save_data(_df_description_automatique_annonces["idannonce", "resume_fr"], OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)
 
 if __name__ == "__main__":

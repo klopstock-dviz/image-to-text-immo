@@ -98,9 +98,10 @@ def main():
             resume=df_description_automatique_annonces.loc[idx, "resume"]
             stream =  ollama.generate(
                 model=MODEL,
-                prompt=f"Translate this summary to french: {resume}",
+                prompt=f"""Translate this summary to French: {resume}\n\n
+                        Stop when you finish the translation.""",
                 stream=True,
-                options={"temperature": 0.2}
+                options={"temperature": 0.2, "stop": ["---", "Stop when you finish"], "max_tokens": 2000}
             )
 
             response = ""

@@ -90,18 +90,22 @@ def main():
 
     logging.info(f"nb annonces à traiter: {len(df_description_automatique_annonces)}")
     df_description_automatique_annonces['resume_fr']=""
+    df_description_automatique_annonces["time"]=0
 
     step_process_ad=0
     for idx in df_description_automatique_annonces.index:
         try:
+            t=timing()
             idannonce= df_description_automatique_annonces.loc[idx, 'idannonce']
             resume=df_description_automatique_annonces.loc[idx, "resume"]
             stream =  ollama.generate(
                 model=MODEL,
-                prompt=f"""Translate this summary to French: {resume}\n\n
-                        Stop when you finish the translation.""",
+                prompt=f"""Translate the following summary to French in no more than 1000 words. 
+                    Do not include any additional commentary or repetition:
+                    {resume}
+                    End your response with the phrase: 'Translation complete.'""",
                 stream=True,
-                options={"temperature": 0.2, "stop": ["---", "Stop when you finish"], "max_tokens": 2000}
+                options={"temperature": 0.2, "max_tokens": 2000}
             )
 
             response = ""
@@ -109,6 +113,7 @@ def main():
             save_data(pd.DataFrame([{"token_id": 0, "response": response}]), CURRENT_RESPONSE, 'w')
 
             token_id=0
+            MAX_LENGTH = 2000 
             for chunk in stream:
                 if 'response' in chunk:
                     content = chunk['response']
@@ -121,13 +126,24 @@ def main():
                     save_data(pd.DataFrame([{"token_id": token_id, "response": response, "time": datetime.datetime.now()}]), CURRENT_RESPONSE, 'a')
                 # print(content, end='', flush=True)
 
+                    # stop mechanism
+                if "Translation complete." in response:
+                        response = response.split("Translation complete.")[0].strip()
+                        break 
+                                        
+                if token_id > MAX_LENGTH:
+                    logging.warning("Token limit exceeded. Truncating response.")
+                    response+=response+" | réponse tronquée"
+                    break
+                
             df_description_automatique_annonces.loc[idx, "resume_fr"]=response
+            df_description_automatique_annonces.loc[idx, "time"]=timing()-t
                 
 
             # save each n steps
             if (step_process_ad + 1) % 5 == 0:
                 _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]
-                csv_path = save_data(_df_description_automatique_annonces[["idannonce", "resume_fr"]], OUTPUT_FILENAME)
+                csv_path = save_data(_df_description_automatique_annonces[["idannonce", "resume_fr", 'time']], OUTPUT_FILENAME)
                 git_push(OUTPUT_FILENAME)
             
             logging.info(f"step {step_process_ad}----------------\n {idannonce}: {len(response.split(' '))} mots")
@@ -143,7 +159,7 @@ def main():
 
         finally:
             logging.info("Streaming generator closed.")
-    _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""][["idannonce", "resume_fr"]]
+    _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""][["idannonce", "resume_fr", 'time']]
     csv_path = save_data(_df_description_automatique_annonces, OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)
 

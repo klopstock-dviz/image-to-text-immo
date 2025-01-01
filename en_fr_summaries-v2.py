@@ -7,6 +7,7 @@ import subprocess
 import os
 import logging
 import concurrent.futures
+import datetime
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='output.log', filemode='a')
@@ -16,10 +17,12 @@ USERNAME = "klopstock-dviz"
 REPO_URL = f'https://github.com/{USERNAME}/image-to-text-immo.git'
 description_automatique_annonces_URL = f'https://raw.githubusercontent.com/{USERNAME}/image-to-text-immo/main/description_automatique_annonces_en.csv'
 MODEL = 'qwen2.5:7b'
-OUTPUT_FILENAME = "description_automatique_annonces_translated"
-PROCESSED_IDS_FILE = "/image-to-text-immo/processed_ids.txt"
+OUTPUT_FILENAME = "./description_automatique_annonces_translated"
+PROCESSED_IDS_FILE = "./processed_ids.txt"
 MAX_RETRIES = 3
-TIMEOUT = 15  # Timeout for API calls (in seconds)
+TIMEOUT = 60  # Timeout for API calls (in seconds)
+TOKEN_STATUS="token_status"
+CURRENT_RESPONSE="current_response"
 
 def log_exception():
     """Log the exception traceback."""
@@ -28,10 +31,10 @@ def log_exception():
 
 def load_processed_ids():
     """Load processed IDs from file."""
-    if os.path.exists(PROCESSED_IDS_FILE):
-        with open(PROCESSED_IDS_FILE, 'r') as file:
-            return set(line.strip() for line in file.readlines())
-    return set()
+    if not os.path.exists(PROCESSED_IDS_FILE):
+        open(PROCESSED_IDS_FILE, 'w').close()  # Create the file if it does not exist
+    with open(PROCESSED_IDS_FILE, 'r') as file:
+        return set(line.strip() for line in file.readlines())
 
 def save_processed_id(idannonce):
     """Append processed ID to file."""
@@ -51,7 +54,9 @@ def load_data(url):
 def save_data(df, filename):
     """Save DataFrame to a CSV file."""
     try:
-        csv_path = f'/image-to-text-immo/{filename}.csv'
+        logging.info("try save df")
+        #csv_path = f'/image-to-text-immo/{filename}.csv'
+        csv_path = f'/{filename}.csv'
         df.to_csv(csv_path, index=False)
         logging.info(f"Data saved to {csv_path}")
         return csv_path
@@ -61,9 +66,10 @@ def save_data(df, filename):
 
 def git_push(filename):
     """Push changes to GitHub."""
+    logging.info("try git push")
     token = os.getenv('GITHUB_TOKEN')
     command = f"""
-    cd /image-to-text-immo && \
+    ## cd /image-to-text-immo && \
     git add {filename}.csv && \
     git diff-index --quiet HEAD || git commit -m 'Add processed DataFrame' && \
     git push https://{USERNAME}:{token}@github.com/{USERNAME}/image-to-text-immo.git
@@ -91,14 +97,24 @@ def generate_with_timeout(resume, model):
     def generate():
         stream = ollama.generate(
             model=model,
-            prompt=f"Translate this summary to french: {resume}",
+            prompt=f"Translate this real estate ad summary to french: {resume}",
             stream=True,
             options={"temperature": 0.2}
         )
+
+        # init file
+        save_data(pd.DataFrame([{"token_id": 0, "response": response}]), CURRENT_RESPONSE, 'w')
+        token_id=0
         response = ""
         for chunk in stream:
             if 'response' in chunk:
                 response += chunk['response']
+                token_id+=1
+
+            if (token_id + 1) % 200 == 0:
+                logging.info(f"log at token id {token_id}")
+                save_data(pd.DataFrame([{"id": token_id, "token": response, "time": datetime.datetime.now()}]), TOKEN_STATUS, "w")
+                save_data(pd.DataFrame([{"token_id": token_id, "response": response, "time": datetime.datetime.now()}]), CURRENT_RESPONSE, 'a')                
         return response
 
     for attempt in range(MAX_RETRIES):
@@ -151,8 +167,9 @@ def main():
             save_processed_id(idannonce)
 
             # Save progress every 10 steps
-            if (step_process_ad + 1) % 10 == 0:
-                csv_path = save_data(df_description_automatique_annonces, OUTPUT_FILENAME)
+            if (step_process_ad + 1) % 5 == 0:
+                _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]["idannonce", "resume_fr"]
+                csv_path = save_data(_df_description_automatique_annonces, OUTPUT_FILENAME)
                 git_push(OUTPUT_FILENAME)
 
             logging.info(f"step {step_process_ad}----------------\n {idannonce}: {len(response.split(' '))} mots")
@@ -164,7 +181,8 @@ def main():
             logging.error(f"Exception occurred at index {idx}: {str(e)}", exc_info=True)
             log_exception()
 
-    csv_path = save_data(df_description_automatique_annonces, OUTPUT_FILENAME)
+    _df_description_automatique_annonces=df_description_automatique_annonces[df_description_automatique_annonces["resume_fr"]!=""]["idannonce", "resume_fr"]
+    csv_path = save_data(_df_description_automatique_annonces, OUTPUT_FILENAME)
     git_push(OUTPUT_FILENAME)
 
 if __name__ == "__main__":
